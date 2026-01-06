@@ -8,6 +8,17 @@
         <form method="POST" action="{{ route('register.store') }}" class="flex flex-col gap-6">
             @csrf
 
+             <!-- Identification -->
+            <flux:input
+                name="identification"
+                :label="__('Identificación')"
+                :value="old('identification')"
+                type="text"
+                required
+                autofocus
+                autocomplete="identification"
+                :placeholder="__('Número de cédula')"
+            />
             <!-- Name -->
             <flux:input
                 name="name"
@@ -18,6 +29,28 @@
                 autofocus
                 autocomplete="name"
                 :placeholder="__('Full name')"
+            />
+            <!-- Surname -->
+            <flux:input
+                name="surname"
+                :label="__('Primer apellido')"
+                :value="old('surname')"
+                type="text"
+                required
+                autofocus
+                autocomplete="surname"
+                :placeholder="__('Primer apellido')"
+            />
+            <!-- Name -->
+            <flux:input
+                name="second_surname"
+                :label="__('Segundo apellido (Si aplica)')"
+                :value="old('second_surname')"
+                type="text"
+                required
+                autofocus
+                autocomplete="second_surname"
+                :placeholder="__('Segundo apellido')"
             />
 
             <!-- Email Address -->
