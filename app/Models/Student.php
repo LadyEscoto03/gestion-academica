@@ -14,4 +14,10 @@ class Student extends Model
         'email',
         'telephone_number'
     ];
+    
+    //relacion entre modelos
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

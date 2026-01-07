@@ -3,6 +3,7 @@
 namespace App\Livewire\Students;
 
 use App\Models\Student;
+use App\Models\User;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 
@@ -17,6 +18,7 @@ class Index extends Component
     public $second_surname = '';
     public $email = '';
     public $telephone_number = '';
+    public User $user;
 
     public function render()
     {
