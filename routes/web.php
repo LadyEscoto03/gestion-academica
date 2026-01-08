@@ -4,6 +4,7 @@ use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\TwoFactor;
+use App\Livewire\Students\Create;
 use App\Livewire\Students\Index;
 use App\Models\Student;
 use Illuminate\Support\Facades\Route;
@@ -36,4 +37,5 @@ Route::middleware(['auth'])->group(function () {
         ->name('two-factor.show');
 });
 
-Route::get('Students/Index',Index::class)->name('students.index');
+Route::get('students/index',Index::class)->name('students.index');
+Route::get('students/create',Create::class)->name('students.create');
