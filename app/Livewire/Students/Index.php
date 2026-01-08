@@ -11,15 +11,7 @@ class Index extends Component
 {
 
     use WithoutUrlPagination;
-
-    public $identification = '';
-    public $name = '';
-    public $surname = '';
-    public $second_surname = '';
-    public $email = '';
-    public $telephone_number = '';
-    public User $user;
-
+    
     public function render()
     {
         return view('livewire.students.index', [

@@ -12,7 +12,8 @@ class Student extends Model
         'surname',
         'second_surname',
         'email',
-        'telephone_number'
+        'telephone_number',
+        'user_id'
     ];
     
     //relacion entre modelos
