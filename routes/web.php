@@ -6,6 +6,7 @@ use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\TwoFactor;
 use App\Livewire\Students\Create;
 use App\Livewire\Students\Index;
+use App\Livewire\Students\Update;
 use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
@@ -39,3 +40,4 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('students/index',Index::class)->name('students.index');
 Route::get('students/create',Create::class)->name('students.create');
+Route::get('students/{student}/update',Update::class)->name('students.update');
