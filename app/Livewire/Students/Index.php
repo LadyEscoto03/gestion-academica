@@ -12,7 +12,13 @@ class Index extends Component
 {
 
     use WithPagination;
-    
+
+    public function delete(Student $student)
+    {
+        $student->delete();
+        session()->flash('success', 'Estudiante eliminado correctamente');
+        $this->redirectRoute('students.index', navigate: true);
+    }
     public function render()
     {
         return view('livewire.students.index', [
