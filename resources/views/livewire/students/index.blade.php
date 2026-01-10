@@ -34,7 +34,7 @@
         role="button">Crear estudiante</a>
 
     <div>
-        <x-table.table :headers="['Id', 'Identificación', 'Nombre', 'email', 'Teléfono', 'Fecha registro', 'Acciones']">
+        <x-table.table :headers="['Id', 'Identificación', 'Nombre', 'email', 'Teléfono', 'Fecha nacimiento', 'Acciones']">
             @foreach ($students as $student)
                 <x-table.tr>
                     <x-table.td> {{ $student->id }} </x-table.td>
@@ -43,7 +43,7 @@
                     </x-table.td>
                     <x-table.td> {{ $student->email }} </x-table.td>
                     <x-table.td> {{ $student->telephone_number }} </x-table.td>
-                    <x-table.td> {{ $student->created_at }} </x-table.td>
+                    <x-table.td> {{ $student->birth_date }} </x-table.td>
                     <x-table.td>
                         <a href="{{ route('students.update', $student) }}"
                             class="inline-flex justify-center items-center gap-2 whitespace-nowrap rounded-radius bg-warning border border-warning dark:border-warning px-2 py-1 text-sm font-medium tracking-wide text-on-warning transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warning active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-warning dark:text-on-warning dark:focus-visible:outline-warning"
@@ -57,9 +57,8 @@
                             </svg>
                         </a>
 
-                        <button 
-                        wire:click="delete({{ $student }})" type="button"
-                        wire:confirm="Estas seguro de eliminar al estudiante {{$student->name.' '.$student->surname}} ?"
+                        <button wire:click="delete({{ $student }})" type="button"
+                            wire:confirm="Estas seguro de eliminar al estudiante {{ $student->name . ' ' . $student->surname }} ?"
                             class="inline-flex justify-center items-center gap-2 whitespace-nowrap rounded-radius bg-danger border border-danger dark:border-danger px-2 py-1 text-sm font-medium tracking-wide text-on-danger transition hover:opacity-75 text-center  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-danger active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-danger dark:text-on-danger dark:focus-visible:outline-danger">
 
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"

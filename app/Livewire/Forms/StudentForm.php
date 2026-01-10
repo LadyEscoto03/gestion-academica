@@ -4,6 +4,7 @@ namespace App\Livewire\Forms;
 
 use App\Models\Student;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -25,19 +26,24 @@ class StudentForm extends Form
     public $email = '';
     #[Validate('required|numeric|min_digits:7|max_digits:15', as: 'Teléfono de contacto')]
     public $telephone_number = '';
+    #[Validate('required|date', as: 'Fecha de nacimiento')]
+    public $birth_date = '';
 
 
-    public function setStudent(Student $student) {
-        $this->student=$student;
-        $this->identification=$student->identification;
-        $this->name=$student->name;
-        $this->surname=$student->surname;
-        $this->second_surname=$student->second_surname;
-        $this->email=$student->email;
-        $this->telephone_number=$student->telephone_number;
+    public function setStudent(Student $student)
+    {
+        $this->student = $student;
+        $this->identification = $student->identification;
+        $this->name = $student->name;
+        $this->surname = $student->surname;
+        $this->second_surname = $student->second_surname;
+        $this->email = $student->email;
+        $this->telephone_number = $student->telephone_number;
+        $this->birth_date = $student->birth_date;
     }
 
-    public function update() {
+    public function update()
+    {
         $this->validate();
         $this->student->update($this->all());
     }
@@ -54,6 +60,7 @@ class StudentForm extends Form
             'second_surname' => $this->second_surname,
             'email' => $this->email,
             'telephone_number' => $this->telephone_number,
+            'birth_date' => $this->birth_date,
             'user_id' => Auth::user()->id
         ]);
     }

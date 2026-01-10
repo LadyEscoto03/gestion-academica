@@ -13,6 +13,7 @@ class Student extends Model
         'second_surname',
         'email',
         'telephone_number',
+        'birth_date',
         'user_id'
     ];
     
