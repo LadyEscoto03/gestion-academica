@@ -1,13 +1,15 @@
 <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
     @if (session('success'))
-       <x-alert key="success"></x-alert>
+        <x-alert key="success"></x-alert>
     @endif
 
-    <a href="{{ route('students.create') }}"
-        class="whitespace-nowrap rounded-radius bg-primary border border-primary px-4 py-2 text-center text-sm font-medium tracking-wide text-on-primary transition hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-75 dark:border-primary-dark dark:bg-primary-dark dark:text-on-primary-dark dark:focus-visible:outline-primary-dark"
-        role="button">Crear estudiante</a>
 
     <div>
+        <div class="py-3">
+            <a href="{{ route('students.create') }}"
+                class="whitespace-nowrap rounded-radius bg-primary border border-primary px-4 py-2 text-center text-sm font-medium tracking-wide text-on-primary transition hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-75 dark:border-primary-dark dark:bg-primary-dark dark:text-on-primary-dark dark:focus-visible:outline-primary-dark"
+                role="button">Crear estudiante</a>
+        </div>
         <x-table.table :headers="['Id', 'Identificación', 'Nombre', 'email', 'Teléfono', 'Fecha nacimiento', 'Acciones']">
             @foreach ($students as $student)
                 <x-table.tr>
