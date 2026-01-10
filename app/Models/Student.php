@@ -16,10 +16,14 @@ class Student extends Model
         'birth_date',
         'user_id'
     ];
-    
+
     //relacion entre modelos
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function educationalSupports()
+    {
+        return $this->belongsToMany(EducationalSupport::class);
     }
 }

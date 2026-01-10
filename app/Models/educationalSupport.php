@@ -6,11 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class educationalSupport extends Model
 {
-    public $fillable = [
+    protected $fillable = [
         'name',
         'type',
         'category',
         'description',
         'status'
     ];
+    public function students() {
+        return $this->belongsToMany(Student::class);
+    }
 }
