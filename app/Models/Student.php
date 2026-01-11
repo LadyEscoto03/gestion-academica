@@ -24,6 +24,7 @@ class Student extends Model
     }
     public function educationalSupports()
     {
-        return $this->belongsToMany(EducationalSupport::class);
+        return $this->belongsToMany(EducationalSupport::class)->withPivot('diagnosis_date', 'description')
+            ->withTimestamps();
     }
 }
