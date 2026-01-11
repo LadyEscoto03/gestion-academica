@@ -4,15 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Province extends Model
+class GradeLevel extends Model
 {
     //relación entre modelos
-    public function cantons()
-    {
-        return $this->hasMany(Canton::class);
-    }
-    public function enrollments()
-    {
+    public function enrollments() {
         return $this->hasMany(Enrollment::class);
     }
 }

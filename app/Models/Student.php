@@ -27,4 +27,7 @@ class Student extends Model
         return $this->belongsToMany(EducationalSupport::class)->withPivot('diagnosis_date', 'description')
             ->withTimestamps();
     }
+    public function enrollments() {
+        return $this->hasMany(Enrollment::class);
+    }
 }
