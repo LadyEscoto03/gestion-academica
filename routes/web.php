@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Disabilities\DisabilityCreate;
 use App\Livewire\Disabilities\DisabilityIndex;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
@@ -46,3 +47,4 @@ Route::get('students/student-create',StudentCreate::class)->name('students.creat
 Route::get('students/{student}/student-update',StudentUpdate::class)->name('students.update');
 
 Route::get('disabilities/disability-index',DisabilityIndex::class)->name('disabilities.index');
+Route::get('disabilities/disability-create',DisabilityCreate::class)->name('disabilities.create');
