@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Dom\Document;
 use Illuminate\Database\Eloquent\Model;
 
 class Enrollment extends Model
@@ -18,5 +19,8 @@ class Enrollment extends Model
     public function province()
     {
         return $this->belongsTo(Province::class);
+    }
+    public function documents() {
+        return $this->hasMany(Document::class);
     }
 }
