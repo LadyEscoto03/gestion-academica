@@ -1,13 +1,16 @@
 <?php
 
+use App\Livewire\Disabilities\DisabilityIndex;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\TwoFactor;
 use App\Livewire\Students\Create;
 use App\Livewire\Students\Index;
+use App\Livewire\Students\StudentCreate;
+use App\Livewire\Students\StudentIndex;
+use App\Livewire\Students\StudentUpdate;
 use App\Livewire\Students\Update;
-use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
@@ -38,6 +41,8 @@ Route::middleware(['auth'])->group(function () {
         ->name('two-factor.show');
 });
 
-Route::get('students/index',Index::class)->name('students.index');
-Route::get('students/create',Create::class)->name('students.create');
-Route::get('students/{student}/update',Update::class)->name('students.update');
+Route::get('students/student-index',StudentIndex::class)->name('students.index');
+Route::get('students/student-create',StudentCreate::class)->name('students.create');
+Route::get('students/{student}/student-update',StudentUpdate::class)->name('students.update');
+
+Route::get('disabilities/disability-index',DisabilityIndex::class)->name('disabilities.index');

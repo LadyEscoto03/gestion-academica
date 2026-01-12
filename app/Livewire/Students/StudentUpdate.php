@@ -6,9 +6,9 @@ use App\Livewire\Forms\StudentForm;
 use App\Models\Student;
 use Livewire\Component;
 
-class Update extends Component
+class StudentUpdate extends Component
 {
-    public StudentForm $form;
+     public StudentForm $form;
 
     public function mount(Student $student)  {
         $this->form->setStudent($student);
@@ -19,8 +19,9 @@ class Update extends Component
         session()->flash('success','Estudiante actualizado correctamente');
         $this->redirectRoute('students.index', navigate: true);
     }
+   
     public function render()
     {
-        return view('livewire.students.create');
+        return view('livewire.students.student-create');
     }
 }
