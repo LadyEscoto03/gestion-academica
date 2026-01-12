@@ -10,6 +10,7 @@ class EducationalSupportStudent extends Model
         'student_id',
         'educational_support_id',
         'diagnosis_date',
-        'description'
+        'description',
+        'status'
     ];
 }

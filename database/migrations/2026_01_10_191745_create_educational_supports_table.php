@@ -15,9 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('type');
-            $table->string('category');
-            $table->text('description');
-            $table->enum('status', ['Activo', 'Inactivo', 'Bajo supervisión'])->default('Activo');
             $table->timestamps();
         });
     }

@@ -9,9 +9,6 @@ class educationalSupport extends Model
     protected $fillable = [
         'name',
         'type',
-        'category',
-        'description',
-        'status'
     ];
     public function students()
     {
