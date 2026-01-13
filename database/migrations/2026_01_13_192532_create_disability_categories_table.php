@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('disabilities', function (Blueprint $table) {
+        Schema::create('disability_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('disability_category_id')->references('id')->on('disability_types');
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('disabilities');
+        Schema::dropIfExists('disability_categories');
     }
 };

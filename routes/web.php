@@ -45,6 +45,3 @@ Route::middleware(['auth'])->group(function () {
 Route::get('students/student-index',StudentIndex::class)->name('students.index');
 Route::get('students/student-create',StudentCreate::class)->name('students.create');
 Route::get('students/{student}/student-update',StudentUpdate::class)->name('students.update');
-
-Route::get('disabilities/disability-index',DisabilityIndex::class)->name('disabilities.index');
-Route::get('disabilities/disability-create',DisabilityCreate::class)->name('disabilities.create');

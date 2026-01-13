@@ -15,4 +15,7 @@ class Disability extends Model
         return $this->belongsToMany(Student::class)->withPivot('diagnosis_date', 'description')
             ->withTimestamps();
     }
+    public function disabilityCategories()  {
+        return $this->hasMany(DisabilityCategory::class);
+    }
 }
