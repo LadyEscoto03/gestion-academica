@@ -2,18 +2,17 @@
 
 namespace App\Livewire\Disabilities;
 
-use App\Livewire\Forms\EducationalSupportForm;
-use App\Models\EducationalSupport;
+use App\Livewire\Forms\DisabilityForm;
 use Livewire\Component;
 
 class DisabilityCreate extends Component
 {
-    public EducationalSupportForm $educationalSupportForm;
+    public DisabilityForm $disabilityForm;
 
 
     public function save()
     {
-        $this->educationalSupportForm->store();
+        $this->disabilityForm->store();
         session()->flash('success', 'Discapacidad agregada correctamente');
         $this->redirectRoute('disabilities.index', navigate: true);
     }

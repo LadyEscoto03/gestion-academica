@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Disabilities;
 
-use App\Models\EducationalSupport;
+use App\Models\Disability;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -12,6 +12,6 @@ class DisabilityIndex extends Component
 
     public function render()
     {
-        return view('livewire.disabilities.disability-index', ['disabilities' => EducationalSupport::paginate(10)]);
+        return view('livewire.disabilities.disability-index', ['disabilities' => Disability::paginate(10)]);
     }
 }

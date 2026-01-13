@@ -9,7 +9,7 @@ use Livewire\WithPagination;
 
 class StudentIndex extends Component
 {
-     use WithPagination;
+    use WithPagination;
 
     public function delete(Student $student)
     {
@@ -17,10 +17,10 @@ class StudentIndex extends Component
         session()->flash('success', 'Estudiante eliminado correctamente');
         $this->redirectRoute('students.index', navigate: true);
     }
-    
+
     public function render()
     {
-        return view('livewire.students.student-index',[
+        return view('livewire.students.student-index', [
             'students' => Student::paginate(10),
         ]);
     }

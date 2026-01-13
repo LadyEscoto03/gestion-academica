@@ -24,7 +24,7 @@ class Student extends Model
     }
     public function educationalSupports()
     {
-        return $this->belongsToMany(EducationalSupport::class)->withPivot('diagnosis_date', 'description')
+        return $this->belongsToMany(Disability::class)->withPivot('diagnosis_date', 'description')
             ->withTimestamps();
     }
     public function enrollments() {

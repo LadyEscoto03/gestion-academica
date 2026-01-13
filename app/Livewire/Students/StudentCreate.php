@@ -7,11 +7,11 @@ use Livewire\Component;
 
 class StudentCreate extends Component
 {
-    public StudentForm $form;
+    public StudentForm $studentForm;
 
     public function save()
     {
-        $this->form->store();
+        $this->studentForm->store();
         session()->flash('success', 'Estudiante agregado correctamente');
         $this->redirectRoute('students.index', navigate: true);
     }

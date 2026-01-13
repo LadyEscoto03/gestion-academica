@@ -2,11 +2,11 @@
 
 namespace App\Livewire\Forms;
 
-use App\Models\educationalSupport;
+use App\Models\Disability;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
-class EducationalSupportForm extends Form
+class DisabilityForm extends Form
 {
     #[Validate('required| max:255', as: 'nombre')]
     public $name = '';
@@ -18,7 +18,7 @@ class EducationalSupportForm extends Form
     {
         $this->validate();
 
-        educationalSupport::create([
+        Disability::create([
 
             'name' => $this->name,
             'type' => $this->type,

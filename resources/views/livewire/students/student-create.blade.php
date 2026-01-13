@@ -1,15 +1,15 @@
 <div>
     <form wire:submit='save' class="space-y-4 max-w-2xl p-4 bg-surface-alt dark:bg-surface-dark-alt rounded-lg shadow-md">
-        <x-form.input label="Identificación" wire:model='form.identification' name="form.identification"></x-form.input>
-        <x-form.input label="Nombre" wire:model='form.name' name="form.name"></x-form.input>
-        <x-form.input label="Primer apellido" wire:model='form.surname' name="form.surname"></x-form.input>
-        <x-form.input label="Segundo apellido (si aplica)" wire:model='form.second_surname'
-            name="form.second_surname"></x-form.input>
-        <x-form.input label="Fecha de nacimiento" wire:model='form.birth_date' name="form.birth_date"
+        <x-form.input label="Identificación" wire:model='studentForm.identification' name="studentForm.identification"></x-form.input>
+        <x-form.input label="Nombre" wire:model='studentForm.name' name="studentForm.name"></x-form.input>
+        <x-form.input label="Primer apellido" wire:model='studentForm.surname' name="studentForm.surname"></x-form.input>
+        <x-form.input label="Segundo apellido (si aplica)" wire:model='studentForm.second_surname'
+            name="studentForm.second_surname"></x-form.input>
+        <x-form.input label="Fecha de nacimiento" wire:model='studentForm.birth_date' name="studentForm.birth_date"
             type="date"></x-form.input>
-        <x-form.input label="Correo electrónico" wire:model='form.email' name="form.email"
+        <x-form.input label="Correo electrónico" wire:model='studentForm.email' name="studentForm.email"
             type="email"></x-form.input>
-        <x-form.input label="Teléfono de contacto" wire:model='form.telephone_number' name="form.telephone_number"
+        <x-form.input label="Teléfono de contacto" wire:model='studentForm.telephone_number' name="studentForm.telephone_number"
             type="phone"></x-form.input>
 
         <!-- primary Button -->

@@ -8,14 +8,14 @@ use Livewire\Component;
 
 class StudentUpdate extends Component
 {
-     public StudentForm $form;
+     public StudentForm $studentForm;
 
     public function mount(Student $student)  {
-        $this->form->setStudent($student);
+        $this->studentForm->setStudent($student);
     }
 
     public function save()  {
-        $this->form->update();
+        $this->studentForm->update();
         session()->flash('success','Estudiante actualizado correctamente');
         $this->redirectRoute('students.index', navigate: true);
     }

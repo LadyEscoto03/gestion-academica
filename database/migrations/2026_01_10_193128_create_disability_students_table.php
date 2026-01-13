@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('educational_support_student', function (Blueprint $table) {
+        Schema::create('disability_students', function (Blueprint $table) {
             $table->id();
             $table->foreignId('student_id')->references('id')->on('students');
-            $table->foreignId('educational_support_id')->references('id')->on('educational_supports');
+            $table->foreignId('desability_id')->references('id')->on('disabilities');
             $table->date('diagnosis_date');
             $table->enum('status', ['Activo', 'Inactivo', 'Bajo supervisión'])->default('Activo');
             $table->text('description');
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('educational_support_student');
+        Schema::dropIfExists('disability_students');
     }
 };
