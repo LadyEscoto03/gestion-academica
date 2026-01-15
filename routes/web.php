@@ -2,6 +2,7 @@
 
 use App\Livewire\Disabilities\DisabilityCreate;
 use App\Livewire\Disabilities\DisabilityIndex;
+use App\Livewire\Enrollments\EnrollmentCreate;
 use App\Livewire\Enrollments\EnrollmentIndex;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
@@ -48,3 +49,4 @@ Route::get('students/student-create',StudentCreate::class)->name('students.creat
 Route::get('students/{student}/student-update',StudentUpdate::class)->name('students.update');
 
 Route::get('enrollments/enrollment-index',EnrollmentIndex::class)->name('enrollments.index');
+Route::get('enrollments/enrollment-create',EnrollmentCreate::class)->name('enrollments.create');
