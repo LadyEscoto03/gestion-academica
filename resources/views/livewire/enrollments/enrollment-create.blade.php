@@ -1,44 +1,35 @@
 <div class="flex h-full w-full flex-col p-4 bg-surface-alt dark:bg-surface-dark-alt rounded-lg shadow-md">
     <form {{-- wire:submit='save' --}}>
 
-        <div x-data="{
-            selected: 1,
-            total: $refs.stepContent.children.length,
-            previous() {
-                if (this.selected > 1) {
-                    this.selected--;
-                }
-            },
-            next() {
-                if (this.selected < this.total) {
-                    this.selected++;
-                }
-        
-            },
-            isSelected(stepItemId) {
-                return 'step-item-' + this.selected === stepItemId;
-            }
-
-        }" x-cloack>
-            <div x-ref="stepContent">
-                <div x-show="isSelected($id('step-item'))" x-id="['step-item']" :id="$id('step-item')">
-                    Stem 1 Content
-                </div>
-                <div x-show="isSelected($id('step-item'))" x-id="['step-item']" :id="$id('step-item')">
-                    Stem 2 Content
-                </div>
-                <div x-show="isSelected($id('step-item'))" x-id="['step-item']" :id="$id('step-item')">
-                    Stem 3 Content
-                </div>
-
-            </div>
+        <h3>{{ $pages[$currentPage]['heading'] }}</h3>
+        <p>{{ $pages[$currentPage]['subHeading'] }}</p>
+        @if ($currentPage == 1)
+            <p>Paso 1</p>
             <div>
-                <button type="button" @click="next">Next</button>
-                <button type="button" @click="previous">Previous</button>
-
+                <x-form.input label="Correo electrónico" wire:model='email' name="email" type="email"></x-form.input>
             </div>
+        @endif
+        @if ($currentPage == 2)
+            <p>Paso 2</p>
 
-        </div>
+
+        @endif
+
+        @if ($currentPage == 3)
+            <p>Paso 3</p>
+        @endif
+
+
+        @if ($currentPage != 1)
+            <button type="button" wire:click="goToPreviousPage">Anteior</button>
+        @endif
+
+        @if ($currentPage == count($pages))
+            <button type="button">Enviar</button>
+        @else
+            <button type="button" wire:click="goToNextPage">Siguiente</button>
+        @endif
+
 
 
 
