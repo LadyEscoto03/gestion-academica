@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('districts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('address');
             $table->foreignId('canton_id')->references('id')->on('cantons');
             $table->timestamps();
         });

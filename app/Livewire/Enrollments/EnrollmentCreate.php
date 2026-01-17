@@ -2,36 +2,41 @@
 
 namespace App\Livewire\Enrollments;
 
+use App\Livewire\Forms\LocationForm;
+use LaravelLang\LocaleList\Locale;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class EnrollmentCreate extends Component
 {
-    public $currentPage=1;
+    public LocationForm $locationForm;
+    public $currentPage = 1;
 
     #[Validate('required|email')]
-    public $email='';
+    public $email = '';
 
 
-    public $pages=[
-        1=>[
-            'heading'=>'Información de estudiante',
-            'subHeading'=>'Ingrese los datos',
+    public $pages = [
+        1 => [
+            'heading' => 'Información de estudiante',
+            'subHeading' => 'Ingrese los datos',
         ],
-         2=>[
-            'heading'=>'Discapacidades',
-            'subHeading'=>'Ingrese los datos',
+        2 => [
+            'heading' => 'Discapacidades',
+            'subHeading' => 'Ingrese los datos',
         ],
-         3=>[
-            'heading'=>'correos',
-            'subHeading'=>'Ingrese los datos',
+        3 => [
+            'heading' => 'correos',
+            'subHeading' => 'Ingrese los datos',
         ]
     ];
-    public function goToNextPage()  {
+    public function goToNextPage()
+    {
         $this->validate();
         $this->currentPage++;
     }
-    public function goToPreviousPage()  {
+    public function goToPreviousPage()
+    {
         $this->currentPage--;
     }
 

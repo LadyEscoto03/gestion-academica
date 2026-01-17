@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('disabilities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('disability_category_id')->references('id')->on('disability_types');
+            //$table->foreignId('disability_category_id')->references('id')->on('disability_categories');
             $table->timestamps();
         });
     }
