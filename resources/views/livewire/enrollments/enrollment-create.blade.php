@@ -1,28 +1,26 @@
 <div class="flex h-full w-full flex-col p-4 bg-surface-alt dark:bg-surface-dark-alt rounded-lg shadow-md">
     <form {{-- wire:submit='save' --}}>
 
-        {{--
-        <select wire:model.live="locationForm.province_id" class="form-select">
-            <option value="">Seleccione provincia</option>
+        <x-form.select label="Selecciona una provincia" name="LocationForm.province_id"
+            wire:model.live="locationForm.province_id">
             @foreach ($provinces as $province)
                 <option value="{{ $province->id }}">{{ $province->name }}</option>
             @endforeach
-        </select>
+        </x-form.select>
 
-        <select wire:model.live="locationForm.canton_id" class="form-select">
-            <option value="">Seleccione cantón</option>
+        <x-form.select label="Selecciona un cantón" name="LocationForm.canton_id" wire:model.live="locationForm.canton_id">
             @foreach ($cantons as $canton)
                 <option value="{{ $canton->id }}">{{ $canton->name }}</option>
             @endforeach
-        </select>
+        </x-form.select>
 
-        <select wire:model.live="locationForm.district_id" class="form-select">
-            <option value="">Seleccione distrito</option>
+        <x-form.select label="Selecciona un distrito" name="LocationForm.district_id"
+            wire:model.live="locationForm.district_id">
             @foreach ($districts as $district)
                 <option value="{{ $district->id }}">{{ $district->name }}</option>
             @endforeach
-        </select>
-        --}}
+        </x-form.select>
+
 
 
         {{--
