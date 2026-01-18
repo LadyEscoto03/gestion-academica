@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class DisabilityCategory extends Model
 {
     //relación entre modelos
-    public function disability()
+    public function disabilities()
     {
-        return $this->belongsTo(Disability::class);
+        return $this->hasMany(Disability::class);
     }
 }
