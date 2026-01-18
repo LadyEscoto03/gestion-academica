@@ -6,7 +6,7 @@ use App\Models\DisabilityCategory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DiscapabilityCategorySeeder extends Seeder
+class DisabilityCategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
