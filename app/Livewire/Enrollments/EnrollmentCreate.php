@@ -44,7 +44,6 @@ class EnrollmentCreate extends Component
     ];
     public function goToNextPage()
     {
-        $this->validate();
         $this->currentPage++;
     }
     public function goToPreviousPage()
