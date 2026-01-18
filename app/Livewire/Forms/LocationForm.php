@@ -16,20 +16,15 @@ class LocationForm extends Form
     #[Validate('nullable')]
     public $district_id = '';
 
-    public $provinces = [];
-    public $cantons = [];
-    public $districts = [];
-
-
     public function getCantonByProvinceId()
     {
-        $this->cantons = Canton::where('province_id', $this->province_id)->get();
         $this->canton_id = '';
-        $this->districts = [];
+        $this->district_id = '';
+        return Canton::where('province_id', $this->province_id)->get();
     }
     public function getDistricByCantonId()
     {
-        $this->districts = District::where('canton_id', $this->canton_id)->get();
         $this->district_id = '';
+        return District::where('canton_id', $this->canton_id)->get();
     }
 }

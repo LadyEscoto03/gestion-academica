@@ -3,6 +3,7 @@
 namespace App\Livewire\Enrollments;
 
 use App\Livewire\Forms\LocationForm;
+use App\Models\Province;
 use LaravelLang\LocaleList\Locale;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -12,8 +13,19 @@ class EnrollmentCreate extends Component
     public LocationForm $locationForm;
     public $currentPage = 1;
 
-    #[Validate('required|email')]
-    public $email = '';
+    public $cantons = [];
+    public $districts = [];
+
+    public function updatedLocationFormProvinceId()
+    {
+
+        $this->cantons = $this->locationForm->getCantonByProvinceId();
+    }
+    public function updatedLocationFormCantonId()
+    {
+
+        $this->districts = $this->locationForm->getDistricByCantonId();
+    }
 
 
     public $pages = [
@@ -40,11 +52,10 @@ class EnrollmentCreate extends Component
         $this->currentPage--;
     }
 
-
-
-
     public function render()
     {
-        return view('livewire.enrollments.enrollment-create');
+        return view('livewire.enrollments.enrollment-create', [
+            'provinces' => Province::all()
+        ]);
     }
 }
