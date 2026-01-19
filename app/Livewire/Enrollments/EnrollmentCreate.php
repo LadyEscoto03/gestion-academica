@@ -27,7 +27,6 @@ class EnrollmentCreate extends Component
         $this->districts = $this->locationForm->getDistricByCantonId();
     }
 
-
     public $pages = [
         1 => [
             'heading' => 'Información de estudiante',
@@ -38,8 +37,16 @@ class EnrollmentCreate extends Component
             'subHeading' => 'Ingrese los datos',
         ],
         3 => [
-            'heading' => 'correos',
-            'subHeading' => 'Ingrese los datos',
+            'heading' => 'Grado a matricular',
+            'subHeading' => 'Seleccione los datos',
+        ],
+        4 => [
+            'heading' => 'Ubicación',
+            'subHeading' => 'Seleccione los datos',
+        ],
+        5 => [
+            'heading' => 'Documentos de respaldo',
+            'subHeading' => 'Seleccione los datos',
         ]
     ];
     public function goToNextPage()
