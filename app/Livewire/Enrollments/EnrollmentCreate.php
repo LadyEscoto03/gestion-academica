@@ -3,6 +3,9 @@
 namespace App\Livewire\Enrollments;
 
 use App\Livewire\Forms\LocationForm;
+use App\Models\Disability;
+use App\Models\DisabilityCategory;
+use App\Models\GradeLevel;
 use App\Models\Province;
 use LaravelLang\LocaleList\Locale;
 use Livewire\Attributes\Validate;
@@ -15,6 +18,20 @@ class EnrollmentCreate extends Component
 
     public $cantons = [];
     public $districts = [];
+    public $provinces = [];
+
+    public $disabilityCategories = [];
+    public $disabilities = [];
+    public $grades=[];
+
+    public function mount()
+    {
+        $this->provinces = Province::all();
+        $this->disabilityCategories = DisabilityCategory::all();
+        $this->disabilities = Disability::all();
+        $this->grades=GradeLevel::all();
+    }
+
 
     public function updatedLocationFormProvinceId()
     {
@@ -60,8 +77,6 @@ class EnrollmentCreate extends Component
 
     public function render()
     {
-        return view('livewire.enrollments.enrollment-create', [
-            'provinces' => Province::all()
-        ]);
+        return view('livewire.enrollments.enrollment-create');
     }
 }

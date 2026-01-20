@@ -21,9 +21,9 @@ class DisabilityCategorySeeder extends Seeder
             'Motora/Física',
             'Neurológica',
             'Multidiscapacidad',
-            'Discapacidad del habla y lenguaje',
-            'Discapacidad cognitiva',
-            'Discapacidad del aprendizaje'
+            'Habla y lenguaje',
+            'Cognitiva',
+            'Aprendizaje'
         ];
 
         foreach ($categories as $category){
