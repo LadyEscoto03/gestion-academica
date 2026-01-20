@@ -11,20 +11,31 @@ class DocumentForm extends Form
 {
     use WithFileUploads;
 
-    #[Validate('required|file|mimes|mimes:pdf,docx,xlsx|max:2048')]
+    #[Validate('required|file|mimes:pdf,docx,xlsx|max:2048')]
     public $file;
+
+    #[Validate('nullable')]
+    public $document_id = '';
 
     public function save(string $enrollment_id)
     {
         $this->validate();
-        $name = $this->file->getOriginalName();
+        $name = $this->file->getClientOriginalName();
         $path = $this->file->store('documents', 'public');
-        $enrollment_id = $enrollment_id;
         Document::create([
             'name' => $name,
             'path' => $path,
             'enrollment_id' => $enrollment_id,
         ]);
 
+    }
+
+    public function export()
+    {
+        if ($this->document_id) {
+            $document = Document::findOrFail($this->document_id);
+
+            return response()->download(storage_path($document->path));
+        }
     }
 }
