@@ -3,17 +3,17 @@
 namespace App\Livewire\Enrollments;
 
 use App\Livewire\Forms\LocationForm;
+use App\Livewire\Forms\StudentForm;
 use App\Models\Disability;
 use App\Models\DisabilityCategory;
 use App\Models\GradeLevel;
 use App\Models\Province;
-use LaravelLang\LocaleList\Locale;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class EnrollmentCreate extends Component
 {
     public LocationForm $locationForm;
+    public StudentForm $studentForm;
     public $currentPage = 1;
 
     public $cantons = [];
@@ -22,14 +22,14 @@ class EnrollmentCreate extends Component
 
     public $disabilityCategories = [];
     public $disabilities = [];
-    public $grades=[];
+    public $grades = [];
 
     public function mount()
     {
         $this->provinces = Province::all();
         $this->disabilityCategories = DisabilityCategory::all();
         $this->disabilities = Disability::all();
-        $this->grades=GradeLevel::all();
+        $this->grades = GradeLevel::all();
     }
 
 
@@ -68,6 +68,7 @@ class EnrollmentCreate extends Component
     ];
     public function goToNextPage()
     {
+       
         $this->currentPage++;
     }
     public function goToPreviousPage()

@@ -42,22 +42,44 @@
                         <div x-show="isAble" x-transition class="mt-2 space-y-2">
 
                             @foreach ($disabilityCategory->disabilities as $disability)
-                                <label class="flex items-center justify-between border p-2 rounded">
-                                    <span class="text-sm">{{ $disability->name }}</span>
+                                <div x-data="{ disability: false }">
+                                    <label class="flex items-center justify-between border p-2 rounded">
+                                        <span class="text-sm">{{ $disability->name }}</span>
 
-                                    <input type="checkbox" name="disabilities[]" value="{{ $disability->id }}"
-                                        class="rounded border-gray-700">
-                                </label>
+                                        <input type="checkbox" x-model="disability" name="disabilities[]"
+                                            value="{{ $disability->id }}" class="rounded border-gray-700">
+
+                                    </label>
+                                    <div x-show="disability" x-transition
+                                        class="mt-2 space-y-2 p-2 border rounded-lg shadow">
+                                        <x-form.input label="Fecha en que se diagnosticó la discapacidad"
+                                            name="diagnosis" type="date"></x-form.input>
+                                        <div
+                                            class="flex w-full max-w-md flex-col gap-1 text-on-surface dark:text-on-surface-dark">
+                                            <label for="textArea" class="w-fit pl-0.5 text-sm">Describa cualquier
+                                                aspecto
+                                                considere importante
+                                                para
+                                                el estudiante y la matrícula (Opcional)</label>
+                                            <textarea id="textArea"
+                                                class="w-full rounded-radius border border-outline bg-surface-alt px-2.5 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-75 dark:border-outline-dark dark:bg-surface-dark-alt/50 dark:focus-visible:outline-primary-dark"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <x-form.input label="Adjunte el documento que respalde lo señalado"
+                                            name="file" type="file"></x-form.input>
+
+                                    </div>
+                                </div>
                             @endforeach
 
                         </div>
 
                     </div>
                 @endforeach
+
+
             </div>
         @endif
-
-
         @if ($currentPage == 3)
             <div>
                 @foreach ($grades as $grade)
@@ -74,8 +96,6 @@
                         </div>
                     </div>
                 @endforeach
-
-
             </div>
         @endif
 
@@ -104,13 +124,12 @@
             </div>
         @endif
         @if ($currentPage == 5)
-        <div>
-<x-form.input label="Adjunte fotocopia de cédula del estudiante a matricular" name="file"
-                type="file"></x-form.input>
-            <x-form.input label="Adjunte fotocopia de cédula del encargado del estudiante" name="file"
-                type="file"></x-form.input>
-        </div>
-            
+            <div>
+                <x-form.input label="Adjunte fotocopia de cédula del estudiante a matricular" name="file"
+                    type="file"></x-form.input>
+                <x-form.input label="Adjunte fotocopia de cédula del encargado del estudiante" name="file"
+                    type="file"></x-form.input>
+            </div>
         @endif
     </div>
     <div class="flex justify-between w-full max-w-3xl">

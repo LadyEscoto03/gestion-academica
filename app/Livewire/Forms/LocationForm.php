@@ -13,7 +13,7 @@ class LocationForm extends Form
     public $province_id = '';
     #[Validate('required')]
     public $canton_id = '';
-    #[Validate('nullable')]
+    #[Validate('required')]
     public $district_id = '';
 
     public function getCantonByProvinceId()

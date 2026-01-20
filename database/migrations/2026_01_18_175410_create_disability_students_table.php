@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('student_id')->references('id')->on('students');
             $table->foreignId('desability_id')->references('id')->on('disabilities');
             $table->date('diagnosis_date');
-            $table->enum('status', ['Activo', 'Inactivo', 'Bajo supervisión'])->default('Activo');
             $table->text('description');
             $table->timestamps();
         });
