@@ -17,7 +17,7 @@ class DocumentForm extends Form
     #[Validate('nullable')]
     public $document_id = '';
 
-    public function save(string $enrollment_id)
+    public function store(string $enrollment_id)
     {
         $this->validate();
         $name = $this->file->getClientOriginalName();

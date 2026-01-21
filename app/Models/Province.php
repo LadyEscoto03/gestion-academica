@@ -11,8 +11,4 @@ class Province extends Model
     {
         return $this->hasMany(Canton::class);
     }
-    public function enrollments()
-    {
-        return $this->hasMany(Enrollment::class);
-    }
 }

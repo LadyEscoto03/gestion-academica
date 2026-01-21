@@ -16,9 +16,9 @@ class Enrollment extends Model
     {
         return $this->belongsTo(GradeLevel::class);
     }
-    public function province()
+    public function district()
     {
-        return $this->belongsTo(Province::class);
+        return $this->belongsTo(District::class);
     }
     public function documents() {
         return $this->hasMany(Document::class);

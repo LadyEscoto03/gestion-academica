@@ -6,9 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class District extends Model
 {
-    //relación entre modelos
+    // relación entre modelos
     public function canton()
     {
         return $this->belongsTo(Canton::class);
+    }
+
+    public function enrollments()
+    {
+        return $this->hasMany(District::class);
     }
 }

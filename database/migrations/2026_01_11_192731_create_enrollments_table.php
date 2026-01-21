@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('state');
             $table->foreignId('student_id')->references('id')->on('students');
             $table->foreignId('grade_level_id')->references('id')->on('grade_levels');
-            $table->foreignId('province_id')->references('id')->on('provinces');
+            $table->foreignId('district_id')->references('id')->on('districts');
             $table->timestamps();
         });
     }
