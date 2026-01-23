@@ -30,63 +30,7 @@
                     name="studentForm.telephone_number" type="phone"></x-form.input>
             </div>
         @endif
-        @if ($currentPage == 2)
-            <div>
 
-                @foreach ($disabilityCategories as $disabilityCategory)
-                    @continue($disabilityCategory->name == 'Multidiscapacidad')
-                    <div
-                        class="p-4 border rounded mb-4 text-on-surface has-disabled:opacity-75 dark:border-outline-dark dark:bg-surface-dark-alt dark:text-on-surface-dark">
-                        <label class="flex items-center gap-2">
-                            <input type="checkbox" class="rounded border-gray-700" value="{{ $disabilityCategory->id }}"
-                                wire:model.live="selectedDisabilityCategory">
-                            <span class="">
-                                ¿El estudiante padece alguna discapacidad {{ $disabilityCategory->name }}?
-                            </span>
-                        </label>
-
-                        @if (in_array($disabilityCategory->id, $selectedDisabilityCategory))
-                            @foreach ($disabilityCategory->disabilities as $disability)
-                                <div class="p-1">
-                                    <label class="flex items-center justify-between border p-2 rounded">
-                                        <span class="text-sm">{{ $disability->name }}</span>
-                                        <input type="checkbox" value="{{ $disability->id }}"
-                                            class="rounded border-gray-700" wire:model.live="selectedDisability">
-                                    </label>
-                                    @if (in_array($disability->id, $selectedDisability))
-                                        <div class="mt-2 space-y-2 p-2 border rounded-lg shadow">
-                                            <x-form.input label="Fecha en que se diagnosticó la discapacidad"
-                                                name="" type="date"></x-form.input>
-                                            <div
-                                                class="flex w-full max-w-md flex-col gap-1 text-on-surface dark:text-on-surface-dark">
-                                                <label for="textArea" class="w-fit pl-0.5 text-sm">Describa cualquier
-                                                    aspecto
-                                                    considere importante
-                                                    para
-                                                    el estudiante y la matrícula (Opcional)</label>
-                                                <textarea id="textArea"
-                                                    class="w-full rounded-radius border border-outline bg-surface-alt px-2.5 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-75 dark:border-outline-dark dark:bg-surface-dark-alt/50 dark:focus-visible:outline-primary-dark"
-                                                    rows="3"></textarea>
-                                            </div>
-                                            <x-form.input label="Adjunte el documento que respalde lo señalado"
-                                                name="" type="file"></x-form.input>
-
-                                        </div>
-                                    @endif
-                                </div>
-                            @endforeach
-                        @endif
-
-                    </div>
-                @endforeach
-
-
-
-
-
-
-            </div>
-        @endif
         @if ($currentPage == 3)
             <div>
                 @foreach ($grades as $grade)
@@ -131,12 +75,22 @@
             </div>
         @endif
         @if ($currentPage == 5)
-            <div>
-                <x-form.input label="Adjunte fotocopia de cédula del estudiante a matricular" name="file"
-                    type="file"></x-form.input>
-                <x-form.input label="Adjunte fotocopia de cédula del encargado del estudiante" name="file"
-                    type="file"></x-form.input>
+            <div class="space-y-4">
+                <x-form.input label="Adjunte fotocopia de cédula del estudiante a matricular" name="fileIdentification"
+                    type="file" wire:model="files"></x-form.input>
+                <x-form.input label="Adjunte fotocopia de cédula del encargado del estudiante"
+                    name="fileIdentificationParent" type="file" wire:model="files"></x-form.input>
+                @foreach ($disabilityCategories as $disabilityCategory)
+                    @foreach ($disabilityCategory->disabilities as $disability)
+                        @if (in_array($disability->id, $selectedDisability))
+                            <x-form.input
+                                label="Adjunte comprobante o dictámen médico donde se hace constar que el estudiante padece de {{ $disability->name }}"
+                                name="fileIdentification" type="file" wire:model="files"></x-form.input>
+                        @endif
+                    @endforeach
+                @endforeach
             </div>
+
         @endif
     </div>
     <div class="flex justify-between w-full max-w-3xl">

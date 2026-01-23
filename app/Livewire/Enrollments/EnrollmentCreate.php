@@ -12,9 +12,11 @@ use App\Models\Enrollment;
 use App\Models\GradeLevel;
 use App\Models\Province;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class EnrollmentCreate extends Component
 {
+    use WithFileUploads;
     public LocationForm $locationForm;
 
     public StudentForm $studentForm;
@@ -35,26 +37,19 @@ class EnrollmentCreate extends Component
 
     public $provinces = [];
 
-    public $disabilityCategories = [];
-
-    public $disabilityData = [];
-
-    public $disabilities = [];
-
+    
     public $grades = [];
 
     public $grade_id = '';
 
     public $files = [];
 
-    public $selectedDisabilityCategory = [];
-    public $selectedDisability = [];
+    
 
     public function mount()
     {
         $this->provinces = Province::all();
-        $this->disabilityCategories = DisabilityCategory::all();
-        $this->disabilities = Disability::all();
+       
         $this->grades = GradeLevel::all();
     }
 
@@ -90,7 +85,6 @@ class EnrollmentCreate extends Component
 
         $this->districts = $this->locationForm->getDistricByCantonId();
     }
-
 
     public $pages = [
         1 => [

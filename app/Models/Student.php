@@ -22,11 +22,7 @@ class Student extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function disabilities()
-    {
-        return $this->belongsToMany(Disability::class)->withPivot('diagnosis_date', 'description')
-            ->withTimestamps();
-    }
+
     public function enrollments() {
         return $this->hasMany(Enrollment::class);
     }
