@@ -1,13 +1,16 @@
 <div
     class="flex h-full w-full flex-col gap-3 p-4 bg-surface-alt dark:bg-surface-dark-alt rounded-lg shadow-md  justify-center items-center">
+
     <div class="h-auto text-left w-full max-w-3xl">
 
         <h1 class="text-2xl font-bold">{{ $pages[$currentPage]['heading'] }}</h1>
         <span class="text-sm">{{ $pages[$currentPage]['subHeading'] }}</span>
 
+
     </div>
 
     <div class="flex md:flex-row w-full max-w-3xl h-auto p-4 border-accent rounded-lg shadow-md justify-center gap-4">
+
         @if ($currentPage == 1)
             <div class="md:w-1/2">
                 <x-form.input label="Identificación" wire:model='studentForm.identification'
@@ -29,53 +32,57 @@
         @endif
         @if ($currentPage == 2)
             <div>
+
                 @foreach ($disabilityCategories as $disabilityCategory)
                     @continue($disabilityCategory->name == 'Multidiscapacidad')
-                    <div x-data="{ isAble: false }"
+                    <div
                         class="p-4 border rounded mb-4 text-on-surface has-disabled:opacity-75 dark:border-outline-dark dark:bg-surface-dark-alt dark:text-on-surface-dark">
                         <label class="flex items-center gap-2">
-                            <input type="checkbox" x-model="isAble" class="rounded border-gray-700">
+                            <input type="checkbox" class="rounded border-gray-700" value="{{ $disabilityCategory->id }}"
+                                wire:model.live="selectedDisabilityCategory">
                             <span class="">
                                 ¿El estudiante padece alguna discapacidad {{ $disabilityCategory->name }}?
                             </span>
                         </label>
-                        <div x-show="isAble" x-transition class="mt-2 space-y-2">
 
+                        @if (in_array($disabilityCategory->id, $selectedDisabilityCategory))
                             @foreach ($disabilityCategory->disabilities as $disability)
-                                <div x-data="{ disability: false }">
+                                <div class="p-1">
                                     <label class="flex items-center justify-between border p-2 rounded">
                                         <span class="text-sm">{{ $disability->name }}</span>
-
-                                        <input type="checkbox" x-model="disability" name="disabilities[]"
-                                            value="{{ $disability->id }}" class="rounded border-gray-700">
-
+                                        <input type="checkbox" value="{{ $disability->id }}"
+                                            class="rounded border-gray-700" wire:model.live="selectedDisability">
                                     </label>
-                                    <div x-show="disability" x-transition
-                                        class="mt-2 space-y-2 p-2 border rounded-lg shadow">
-                                        <x-form.input label="Fecha en que se diagnosticó la discapacidad"
-                                            name="diagnosis" type="date"></x-form.input>
-                                        <div
-                                            class="flex w-full max-w-md flex-col gap-1 text-on-surface dark:text-on-surface-dark">
-                                            <label for="textArea" class="w-fit pl-0.5 text-sm">Describa cualquier
-                                                aspecto
-                                                considere importante
-                                                para
-                                                el estudiante y la matrícula (Opcional)</label>
-                                            <textarea id="textArea"
-                                                class="w-full rounded-radius border border-outline bg-surface-alt px-2.5 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-75 dark:border-outline-dark dark:bg-surface-dark-alt/50 dark:focus-visible:outline-primary-dark"
-                                                rows="3"></textarea>
-                                        </div>
-                                        <x-form.input label="Adjunte el documento que respalde lo señalado"
-                                            name="file" type="file"></x-form.input>
+                                    @if (in_array($disability->id, $selectedDisability))
+                                        <div class="mt-2 space-y-2 p-2 border rounded-lg shadow">
+                                            <x-form.input label="Fecha en que se diagnosticó la discapacidad"
+                                                name="" type="date"></x-form.input>
+                                            <div
+                                                class="flex w-full max-w-md flex-col gap-1 text-on-surface dark:text-on-surface-dark">
+                                                <label for="textArea" class="w-fit pl-0.5 text-sm">Describa cualquier
+                                                    aspecto
+                                                    considere importante
+                                                    para
+                                                    el estudiante y la matrícula (Opcional)</label>
+                                                <textarea id="textArea"
+                                                    class="w-full rounded-radius border border-outline bg-surface-alt px-2.5 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-75 dark:border-outline-dark dark:bg-surface-dark-alt/50 dark:focus-visible:outline-primary-dark"
+                                                    rows="3"></textarea>
+                                            </div>
+                                            <x-form.input label="Adjunte el documento que respalde lo señalado"
+                                                name="" type="file"></x-form.input>
 
-                                    </div>
+                                        </div>
+                                    @endif
                                 </div>
                             @endforeach
-
-                        </div>
+                        @endif
 
                     </div>
                 @endforeach
+
+
+
+
 
 
             </div>

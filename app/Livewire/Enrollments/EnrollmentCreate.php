@@ -37,6 +37,8 @@ class EnrollmentCreate extends Component
 
     public $disabilityCategories = [];
 
+    public $disabilityData = [];
+
     public $disabilities = [];
 
     public $grades = [];
@@ -44,6 +46,9 @@ class EnrollmentCreate extends Component
     public $grade_id = '';
 
     public $files = [];
+
+    public $selectedDisabilityCategory = [];
+    public $selectedDisability = [];
 
     public function mount()
     {
@@ -85,6 +90,7 @@ class EnrollmentCreate extends Component
 
         $this->districts = $this->locationForm->getDistricByCantonId();
     }
+
 
     public $pages = [
         1 => [
