@@ -6,8 +6,6 @@ use App\Livewire\Forms\DocumentForm;
 use App\Livewire\Forms\EnrollmentForm;
 use App\Livewire\Forms\LocationForm;
 use App\Livewire\Forms\StudentForm;
-use App\Models\Disability;
-use App\Models\DisabilityCategory;
 use App\Models\Enrollment;
 use App\Models\GradeLevel;
 use App\Models\Province;
@@ -17,6 +15,7 @@ use Livewire\WithFileUploads;
 class EnrollmentCreate extends Component
 {
     use WithFileUploads;
+
     public LocationForm $locationForm;
 
     public StudentForm $studentForm;
@@ -29,27 +28,24 @@ class EnrollmentCreate extends Component
 
     public $currentPage = 1;
 
+    public $files = [];
+
+    // datos de los select dependiente de las ubicaciones
+    public $district_id = '';
+
     public $cantons = [];
 
     public $districts = [];
 
-    public $district_id = '';
-
+    // datos que se inicializan al ingreso al componente (Método mount)
     public $provinces = [];
 
-    
     public $grades = [];
-
-    public $grade_id = '';
-
-    public $files = [];
-
-    
 
     public function mount()
     {
         $this->provinces = Province::all();
-       
+
         $this->grades = GradeLevel::all();
     }
 
@@ -92,18 +88,14 @@ class EnrollmentCreate extends Component
             'subHeading' => 'Ingrese los datos',
         ],
         2 => [
-            'heading' => 'Discapacidades',
-            'subHeading' => 'Ingrese los datos',
-        ],
-        3 => [
             'heading' => 'Grado a matricular',
             'subHeading' => 'Seleccione los datos',
         ],
-        4 => [
+        3 => [
             'heading' => 'Ubicación',
             'subHeading' => 'Seleccione los datos',
         ],
-        5 => [
+        4 => [
             'heading' => 'Documentos de respaldo',
             'subHeading' => 'Seleccione los datos',
         ],
@@ -111,6 +103,20 @@ class EnrollmentCreate extends Component
 
     public function goToNextPage()
     {
+
+        if ($this->currentPage == 1) {
+            $this->studentForm->validate();
+        }
+        if ($this->currentPage == 2) {
+            $this->enrollmentForm->validateOnly('grade_level_id');
+        }
+        if ($this->currentPage == 3) {
+            $this->locationForm->validate();
+        }
+
+        if ($this->currentPage == 4) {
+            $this->documentForm->validate();
+        }
 
         $this->currentPage++;
     }

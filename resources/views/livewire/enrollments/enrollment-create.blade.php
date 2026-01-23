@@ -31,28 +31,22 @@
             </div>
         @endif
 
-        @if ($currentPage == 3)
+        @if ($currentPage == 2)
             <div>
                 @foreach ($grades as $grade)
                     <div class="p-2 gap-2">
-                        <div class="flex flex-col gap-2">
-
-                            <label for="radioLinux"
-                                class="flex w-fit min-w-52 items-center justify-start gap-2 rounded-radius border border-outline bg-surface-alt px-4 py-2 font-medium text-on-surface has-disabled:opacity-75 dark:border-outline-dark dark:bg-surface-dark-alt dark:text-on-surface-dark">
-                                <input id="radioLinux" type="radio"
-                                    class="before:content[''] relative h-4 w-4 appearance-none rounded-full border border-outline bg-surface before:invisible before:absolute before:left-1/2 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-on-primary checked:border-primary checked:bg-primary checked:before:visible focus:outline-2 focus:outline-offset-2 focus:outline-outline-strong checked:focus:outline-primary disabled:cursor-not-allowed dark:border-outline-dark dark:bg-surface-dark dark:before:bg-on-primary-dark dark:checked:border-primary-dark dark:checked:bg-primary-dark dark:focus:outline-outline-dark-strong dark:checked:focus:outline-primary-dark"
-                                    name="radioDefault" value="">
-                                <span class="">{{ $grade->name }}</span>
-                            </label>
+                        <div class="flex flex-col border rounded-lg p-3 shadow">
+                            <x-form.input label="{{ $grade->name }}" type="radio" name="enrollmentForm.grade_level_id"
+                                wire:model="enrollmentForm.grade_level_id" value="{{ $grade->id }}"></x-form.input>
                         </div>
                     </div>
                 @endforeach
             </div>
         @endif
 
-        @if ($currentPage == 4)
+        @if ($currentPage == 3)
             <div class="md:w-1/2">
-                <x-form.select label="Selecciona una provincia" name="LocationForm.province_id"
+                <x-form.select label="Selecciona una provincia" name="locationForm.province_id"
                     wire:model.live="locationForm.province_id">
                     @foreach ($provinces as $province)
                         <option value="{{ $province->id }}">{{ $province->name }}</option>
@@ -60,13 +54,13 @@
                 </x-form.select>
             </div>
             <div class="md:w-1/2">
-                <x-form.select label="Selecciona un cantón" name="LocationForm.canton_id"
+                <x-form.select label="Selecciona un cantón" name="locationForm.canton_id"
                     wire:model.live="locationForm.canton_id">
                     @foreach ($cantons as $canton)
                         <option value="{{ $canton->id }}">{{ $canton->name }}</option>
                     @endforeach
                 </x-form.select>
-                <x-form.select label="Selecciona un distrito" name="LocationForm.district_id"
+                <x-form.select label="Selecciona un distrito" name="locationForm.district_id"
                     wire:model.live="locationForm.district_id">
                     @foreach ($districts as $district)
                         <option value="{{ $district->id }}">{{ $district->name }}</option>
@@ -74,23 +68,13 @@
                 </x-form.select>
             </div>
         @endif
-        @if ($currentPage == 5)
+        @if ($currentPage == 4)
             <div class="space-y-4">
-                <x-form.input label="Adjunte fotocopia de cédula del estudiante a matricular" name="fileIdentification"
-                    type="file" wire:model="files"></x-form.input>
+                <x-form.input label="Adjunte fotocopia de cédula del estudiante a matricular" name=""
+                    type="file" wire:model=""></x-form.input>
                 <x-form.input label="Adjunte fotocopia de cédula del encargado del estudiante"
-                    name="fileIdentificationParent" type="file" wire:model="files"></x-form.input>
-                @foreach ($disabilityCategories as $disabilityCategory)
-                    @foreach ($disabilityCategory->disabilities as $disability)
-                        @if (in_array($disability->id, $selectedDisability))
-                            <x-form.input
-                                label="Adjunte comprobante o dictámen médico donde se hace constar que el estudiante padece de {{ $disability->name }}"
-                                name="fileIdentification" type="file" wire:model="files"></x-form.input>
-                        @endif
-                    @endforeach
-                @endforeach
+                    name="" type="file" wire:model=""></x-form.input>
             </div>
-
         @endif
     </div>
     <div class="flex justify-between w-full max-w-3xl">

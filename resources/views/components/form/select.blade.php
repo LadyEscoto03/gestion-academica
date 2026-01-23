@@ -13,4 +13,7 @@
         <option selected>Seleccione una opción</option>
         {{ $slot }}
     </select>
+    @error($name)
+        <span class="error text-red-600">{{ $message }}</span>
+    @enderror
 </div>
