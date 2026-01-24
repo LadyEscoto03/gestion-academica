@@ -9,10 +9,10 @@
 
     </div>
 
-    <div class="flex md:flex-row w-full max-w-3xl h-auto p-4 border-accent rounded-lg shadow-md justify-center gap-4">
+    <div class="flex w-full max-w-2xl  h-auto p-4 shadow-xl/30 rounded-lg shadow-md justify-center border">
 
-        @if ($currentPage == 1)
-            <div class="md:w-1/2">
+        <div x-show="$wire.currentPage == 1" class="space-y-4">
+            <div>
                 <x-form.input label="Identificación" wire:model='studentForm.identification'
                     name="studentForm.identification"></x-form.input>
                 <x-form.input label="Nombre" wire:model='studentForm.name' name="studentForm.name"></x-form.input>
@@ -21,7 +21,7 @@
                 <x-form.input label="Segundo apellido (si aplica)" wire:model='studentForm.second_surname'
                     name="studentForm.second_surname"></x-form.input>
             </div>
-            <div class="md:w-1/2">
+            <div>
                 <x-form.input label="Fecha de nacimiento" wire:model='studentForm.birth_date'
                     name="studentForm.birth_date" type="date"></x-form.input>
                 <x-form.input label="Correo electrónico" wire:model='studentForm.email' name="studentForm.email"
@@ -29,23 +29,24 @@
                 <x-form.input label="Teléfono de contacto" wire:model='studentForm.telephone_number'
                     name="studentForm.telephone_number" type="phone"></x-form.input>
             </div>
-        @endif
+        </div>
 
-        @if ($currentPage == 2)
+        <div x-show="$wire.currentPage == 2" class="space-y-4">
             <div>
                 @foreach ($grades as $grade)
                     <div class="p-2 gap-2">
                         <div class="flex flex-col border rounded-lg p-3 shadow">
-                            <x-form.input label="{{ $grade->name }}" type="radio" name="enrollmentForm.grade_level_id"
-                                wire:model="enrollmentForm.grade_level_id" value="{{ $grade->id }}"></x-form.input>
+                            <x-form.input label="{{ $grade->name }}" type="radio"
+                                name="enrollmentForm.grade_level_id" wire:model="enrollmentForm.grade_level_id"
+                                value="{{ $grade->id }}"></x-form.input>
                         </div>
                     </div>
                 @endforeach
             </div>
-        @endif
+        </div>
 
-        @if ($currentPage == 3)
-            <div class="md:w-1/2">
+        <div x-show="$wire.currentPage == 3" class="space-y-4">
+            <div>
                 <x-form.select label="Selecciona una provincia" name="locationForm.province_id"
                     wire:model.live="locationForm.province_id">
                     @foreach ($provinces as $province)
@@ -53,7 +54,7 @@
                     @endforeach
                 </x-form.select>
             </div>
-            <div class="md:w-1/2">
+            <div>
                 <x-form.select label="Selecciona un cantón" name="locationForm.canton_id"
                     wire:model.live="locationForm.canton_id">
                     @foreach ($cantons as $canton)
@@ -67,15 +68,15 @@
                     @endforeach
                 </x-form.select>
             </div>
-        @endif
-        @if ($currentPage == 4)
-            <div class="space-y-4">
+        </div>
+        <div x-show="$wire.currentPage == 4" class="space-y-4">
+            <div>
                 <x-form.input label="Adjunte fotocopia de cédula del estudiante a matricular" name=""
                     type="file" wire:model=""></x-form.input>
-                <x-form.input label="Adjunte fotocopia de cédula del encargado del estudiante"
-                    name="" type="file" wire:model=""></x-form.input>
+                <x-form.input label="Adjunte fotocopia de cédula del encargado del estudiante" name=""
+                    type="file" wire:model=""></x-form.input>
             </div>
-        @endif
+        </div>
     </div>
     <div class="flex justify-between w-full max-w-3xl">
 

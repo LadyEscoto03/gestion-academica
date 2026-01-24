@@ -104,19 +104,21 @@ class EnrollmentCreate extends Component
     public function goToNextPage()
     {
 
-        if ($this->currentPage == 1) {
-            $this->studentForm->validate();
-        }
-        if ($this->currentPage == 2) {
-            $this->enrollmentForm->validateOnly('grade_level_id');
-        }
-        if ($this->currentPage == 3) {
-            $this->locationForm->validate();
-        }
+        /*
+            if ($this->currentPage == 1) {
+                $this->studentForm->validate();
+            }
+            if ($this->currentPage == 2) {
+                $this->enrollmentForm->validateOnly('grade_level_id');
+            }
+            if ($this->currentPage == 3) {
+                $this->locationForm->validate();
+            }
 
-        if ($this->currentPage == 4) {
-            $this->documentForm->validate();
-        }
+            if ($this->currentPage == 4) {
+                $this->documentForm->validate();
+            }
+        */
 
         $this->currentPage++;
     }
