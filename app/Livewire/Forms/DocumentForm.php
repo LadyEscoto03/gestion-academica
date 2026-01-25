@@ -11,8 +11,11 @@ class DocumentForm extends Form
 {
     use WithFileUploads;
 
-    #[Validate('required|file|mimes:pdf,docx,xlsx|max:2048')]
-    public $file;
+    #[Validate('required|file|mimes:pdf,docx,xlsx|max:10240',as: 'Fotocopia de cédula del estudiante')]
+    public $fileStudentIdentification;
+
+    #[Validate('required|file|mimes:pdf,docx,xlsx|max:10240', as : 'Fotocopia de cédula del encargado')]
+    public $fileStudentRepresentativeIdentification;
 
     #[Validate('nullable')]
     public $document_id = '';
@@ -20,13 +23,21 @@ class DocumentForm extends Form
     public function store(string $enrollment_id)
     {
         $this->validate();
-        $name = $this->file->getClientOriginalName();
-        $path = $this->file->store('documents', 'public');
-        Document::create([
-            'name' => $name,
-            'path' => $path,
-            'enrollment_id' => $enrollment_id,
-        ]);
+
+        $files = [$this->fileStudentIdentification, $this->fileStudentRepresentativeIdentification];
+
+        foreach ($files as $key => $file) {
+            if ($file) {
+                $name = $file->getClientOriginalName();
+                $path = $file->store('documents', 'public');
+                Document::create([
+                    'name' => $name,
+                    'path' => $path,
+                    'enrollment_id' => $enrollment_id,
+                ]);
+
+            }
+        }
 
     }
 

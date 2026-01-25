@@ -16,6 +16,7 @@ class EnrollmentCreate extends Component
 {
     use WithFileUploads;
 
+    // formularios
     public LocationForm $locationForm;
 
     public StudentForm $studentForm;
@@ -27,8 +28,6 @@ class EnrollmentCreate extends Component
     private $year = 2026;
 
     public $currentPage = 1;
-
-    public $files = [];
 
     // datos de los select dependiente de las ubicaciones
     public $district_id = '';
@@ -61,12 +60,9 @@ class EnrollmentCreate extends Component
             'grade_level_id' => $this->grade_id,
             'district_id' => $this->district_id,
         ]);
-        if (! empty($files)) {
-            foreach ($files as $file) {
-                $this->documentForm->validate();
-                $this->documentForm->store($enrollment->id);
-            }
-        }
+        $this->documentForm->store($enrollment->id);
+        session()->flash('success', 'Matrícula agregada correctamente');
+        $this->redirectRoute('enrollments.index', navigate: true);
 
     }
 
@@ -103,7 +99,6 @@ class EnrollmentCreate extends Component
 
     public function goToNextPage()
     {
-
         /*
             if ($this->currentPage == 1) {
                 $this->studentForm->validate();
@@ -118,8 +113,11 @@ class EnrollmentCreate extends Component
             if ($this->currentPage == 4) {
                 $this->documentForm->validate();
             }
-        */
 
+            if ($this->currentPage == 4) {
+                $this->documentForm->validate();
+            }
+        */
         $this->currentPage++;
     }
 
