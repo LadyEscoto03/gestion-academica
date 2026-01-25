@@ -7,20 +7,33 @@ use Illuminate\Database\Eloquent\Model;
 
 class Enrollment extends Model
 {
-    //relación entre modelos
+    protected $fillable = [
+        'year',
+        'description',
+        'state',
+        'student_id',
+        'grade_level_id',
+        'district_id',
+    ];
+
+    // relación entre modelos
     public function student()
     {
-        return $this->belongsTo(Enrollment::class);
+        return $this->belongsTo(Student::class);
     }
+
     public function gradeLevel()
     {
         return $this->belongsTo(GradeLevel::class);
     }
+
     public function district()
     {
         return $this->belongsTo(District::class);
     }
-    public function documents() {
+
+    public function documents()
+    {
         return $this->hasMany(Document::class);
     }
 }

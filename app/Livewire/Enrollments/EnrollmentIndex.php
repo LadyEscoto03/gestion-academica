@@ -12,8 +12,9 @@ class EnrollmentIndex extends Component
 
     public function render()
     {
-        return view('livewire.enrollments.enrollment-index', [
-            'enrollments' => Enrollment::Paginate(10)
-        ]);
+        $enrollments = Enrollment::with('student', 'gradeLevel','district')->Paginate(10);
+      
+
+        return view('livewire.enrollments.enrollment-index', compact('enrollments'));
     }
 }

@@ -8,7 +8,7 @@ use Livewire\Form;
 class EnrollmentForm extends Form
 {
     #[Validate('required|numeric|min:4')]
-    public $yaer = 0;
+    public $year = 0;
 
     #[Validate('nullable|string|max:255')]
     public $description = '';

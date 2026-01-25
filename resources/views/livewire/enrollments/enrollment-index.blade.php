@@ -5,7 +5,7 @@
 
     <div>
         <div class="py-3">
-            <a href="{{route('enrollments.create')}}"
+            <a href="{{ route('enrollments.create') }}"
                 class="whitespace-nowrap rounded-radius bg-primary border border-primary px-4 py-2 text-center text-sm font-medium tracking-wide text-on-primary transition hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-75 dark:border-primary-dark dark:bg-primary-dark dark:text-on-primary-dark dark:focus-visible:outline-primary-dark"
                 role="button">Añadir matrícula</a>
         </div>
@@ -13,6 +13,7 @@
             @foreach ($enrollments as $enrollment)
                 <x-table.tr>
                     <x-table.td> {{ $enrollment->id }} </x-table.td>
+                    <x-table.td> {{ $enrollment->year }} </x-table.td>
                     <x-table.td> {{ $enrollment->student->identification }} </x-table.td>
                     <x-table.td>
                         {{ $enrollment->student->name . ' ' . $enrollment->student->surname . ' ' . $enrollment->student->second_surname }}

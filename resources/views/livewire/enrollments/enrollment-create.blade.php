@@ -8,7 +8,7 @@
         <span class="text-sm">{{ $pages[$currentPage]['subHeading'] }}</span>
     </div>
 
-    <form wire.submit ="save" class="w-full max-w-2xl h-auto">
+    <form wire:submit ="save" class="w-full max-w-2xl h-auto" enctype="multipart/form-data">
         <div class="flex p-4 rounded-lg shadow-md justify-center ">
             <div x-show="$wire.currentPage == 1" class="space-y-4">
                 <div>

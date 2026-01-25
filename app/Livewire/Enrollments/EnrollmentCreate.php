@@ -50,16 +50,22 @@ class EnrollmentCreate extends Component
 
     public function save()
     {
+        $this->studentForm->validate();
         $student = $this->studentForm->store();
-        $this->enrollmentForm->validate();
+
+        $this->locationForm->validate();
+
+        $this->documentForm->validate();
+
         $enrollment = Enrollment::create([
             'year' => $this->year,
             'description' => '',
             'state' => 'Pendiente',
             'student_id' => $student->id,
-            'grade_level_id' => $this->grade_id,
-            'district_id' => $this->district_id,
+            'grade_level_id' => $this->enrollmentForm->grade_level_id,
+            'district_id' => $this->locationForm->district_id,
         ]);
+
         $this->documentForm->store($enrollment->id);
         session()->flash('success', 'Matrícula agregada correctamente');
         $this->redirectRoute('enrollments.index', navigate: true);
@@ -99,25 +105,21 @@ class EnrollmentCreate extends Component
 
     public function goToNextPage()
     {
-        /*
-            if ($this->currentPage == 1) {
-                $this->studentForm->validate();
-            }
-            if ($this->currentPage == 2) {
-                $this->enrollmentForm->validateOnly('grade_level_id');
-            }
-            if ($this->currentPage == 3) {
-                $this->locationForm->validate();
-            }
 
-            if ($this->currentPage == 4) {
-                $this->documentForm->validate();
-            }
+        if ($this->currentPage == 1) {
+            $this->studentForm->validate();
+        }
+        if ($this->currentPage == 2) {
+            $this->enrollmentForm->validateOnly('grade_level_id');
+        }
+        if ($this->currentPage == 3) {
+            $this->locationForm->validate();
+        }
 
-            if ($this->currentPage == 4) {
-                $this->documentForm->validate();
-            }
-        */
+        if ($this->currentPage == 4) {
+            $this->documentForm->validate();
+        }
+
         $this->currentPage++;
     }
 
