@@ -50,6 +50,13 @@ class StudentForm extends Form
         $this->student->update($this->all());
     }
 
+    public function searchStudentById($identification)
+    {
+        $studentSearch = Student::where('identification', $identification)->first();
+
+        return $studentSearch;
+    }
+
     public function store()
     {
         $this->validate();

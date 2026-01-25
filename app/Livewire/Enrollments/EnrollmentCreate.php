@@ -51,8 +51,12 @@ class EnrollmentCreate extends Component
     public function save()
     {
         $this->studentForm->validate();
-        $student = $this->studentForm->store();
 
+        if ($this->studentForm->searchStudentById($this->studentForm->identification)) {
+            $student = $this->studentForm->searchStudentById($this->studentForm->identification);
+        } else {
+            $student = $this->studentForm->store();
+        }
         $this->locationForm->validate();
 
         $this->documentForm->validate();
