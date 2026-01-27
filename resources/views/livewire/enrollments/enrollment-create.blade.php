@@ -70,13 +70,10 @@
             </div>
             <div x-show="$wire.currentPage == 4" class="space-y-4">
                 <div>
-                    <x-form.input label="Adjunte fotocopia de cédula del estudiante a matricular"
-                        name="documentForm.fileStudentIdentification" type="file"
-                        wire:model="documentForm.fileStudentIdentification"></x-form.input>
+                    <x-form.input label="Adjunte fotocopia de cédula del estudiante y del encargado del estudiante"
+                        name="documentForm.files" type="file" wire:model="documentForm.files"
+                        multiple></x-form.input>
 
-                    <x-form.input label="Adjunte fotocopia de cédula del encargado del estudiante"
-                        name="documentForm.fileStudentRepresentativeIdentification" type="file"
-                        wire:model="documentForm.fileStudentRepresentativeIdentification"></x-form.input>
                 </div>
             </div>
 

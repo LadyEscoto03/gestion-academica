@@ -72,13 +72,11 @@ class EnrollmentCreate extends Component
             'district_id' => $this->locationForm->district_id,
         ]);
 
-        $this->documentForm->store($enrollment->id);
+        $this->documentForm->save($enrollment->id);
         session()->flash('success', 'Matrícula agregada correctamente');
         $this->redirectRoute('enrollments.index', navigate: true);
 
     }
-
-    
 
     public function updatedLocationFormProvinceId()
     {
