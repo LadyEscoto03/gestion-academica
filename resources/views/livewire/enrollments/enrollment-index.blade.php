@@ -9,7 +9,7 @@
                 class="whitespace-nowrap rounded-radius bg-primary border border-primary px-4 py-2 text-center text-sm font-medium tracking-wide text-on-primary transition hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-75 dark:border-primary-dark dark:bg-primary-dark dark:text-on-primary-dark dark:focus-visible:outline-primary-dark"
                 role="button">Añadir matrícula</a>
         </div>
-        <x-table.table :headers="['Id', 'Año', 'Cédula', 'Nombre', 'Grado','Estado', 'Acciones']">
+        <x-table.table :headers="['Id', 'Año', 'Cédula', 'Nombre', 'Grado', 'Estado', 'Acciones']">
             @foreach ($enrollments as $enrollment)
                 <x-table.tr>
                     <x-table.td> {{ $enrollment->id }} </x-table.td>
@@ -22,7 +22,7 @@
                     <x-table.td> {{ $enrollment->state }} </x-table.td>
 
                     <x-table.td>
-                        <a href="#"
+                        <a href="{{ route('enrollments.update', $enrollment) }}"
                             class="inline-flex justify-center items-center gap-2 whitespace-nowrap rounded-radius bg-warning border border-warning dark:border-warning px-2 py-1 text-sm font-medium tracking-wide text-on-warning transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warning active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-warning dark:text-on-warning dark:focus-visible:outline-warning"
                             wire:navigate>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"

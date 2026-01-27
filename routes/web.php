@@ -1,19 +1,15 @@
 <?php
 
-use App\Livewire\Disabilities\DisabilityCreate;
-use App\Livewire\Disabilities\DisabilityIndex;
 use App\Livewire\Enrollments\EnrollmentCreate;
 use App\Livewire\Enrollments\EnrollmentIndex;
+use App\Livewire\Enrollments\EnrollmentUpdate;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\TwoFactor;
-use App\Livewire\Students\Create;
-use App\Livewire\Students\Index;
 use App\Livewire\Students\StudentCreate;
 use App\Livewire\Students\StudentIndex;
 use App\Livewire\Students\StudentUpdate;
-use App\Livewire\Students\Update;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
@@ -44,9 +40,10 @@ Route::middleware(['auth'])->group(function () {
         ->name('two-factor.show');
 });
 
-Route::get('students/student-index',StudentIndex::class)->name('students.index');
-Route::get('students/student-create',StudentCreate::class)->name('students.create');
-Route::get('students/{student}/student-update',StudentUpdate::class)->name('students.update');
+Route::get('students/student-index', StudentIndex::class)->name('students.index');
+Route::get('students/student-create', StudentCreate::class)->name('students.create');
+Route::get('students/{student}/student-update', StudentUpdate::class)->name('students.update');
 
-Route::get('enrollments/enrollment-index',EnrollmentIndex::class)->name('enrollments.index');
-Route::get('enrollments/enrollment-create',EnrollmentCreate::class)->name('enrollments.create');
+Route::get('enrollments/enrollment-index', EnrollmentIndex::class)->name('enrollments.index');
+Route::get('enrollments/enrollment-create', EnrollmentCreate::class)->name('enrollments.create');
+Route::get('enrollments/{enrollment}/enrollment-create', EnrollmentUpdate::class)->name('enrollments.update');

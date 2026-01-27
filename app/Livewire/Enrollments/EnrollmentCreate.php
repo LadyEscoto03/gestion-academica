@@ -25,6 +25,8 @@ class EnrollmentCreate extends Component
 
     public DocumentForm $documentForm;
 
+    public ?Enrollment $enrollment;
+
     private $year = 2026;
 
     public $currentPage = 1;
@@ -75,6 +77,8 @@ class EnrollmentCreate extends Component
         $this->redirectRoute('enrollments.index', navigate: true);
 
     }
+
+    
 
     public function updatedLocationFormProvinceId()
     {
