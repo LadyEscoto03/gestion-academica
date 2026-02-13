@@ -11,7 +11,7 @@
              <!-- identification -->
             <flux:input
                 name="identification"
-                :label="__('Identification')"
+                :label="__('Número de cédula')"
                 :value="old('identification')"
                 type="text"
                 required
@@ -22,7 +22,7 @@
             <!-- Name -->
             <flux:input
                 name="name"
-                :label="__('Name')"
+                :label="__('Nombre')"
                 :value="old('name')"
                 type="text"
                 required
@@ -33,7 +33,7 @@
              <!-- surname -->
             <flux:input
                 name="surname"
-                :label="__('surname')"
+                :label="__('Primer apellido')"
                 :value="old('surname')"
                 type="text"
                 required
@@ -41,22 +41,11 @@
                 autocomplete="surname"
                 :placeholder="__('Primer apellido')"
             />
-            <!-- phone number -->
-            <flux:input
-                name="phoneNumber"
-                :label="__('Phone Number')"
-                :value="old('phoneNumber')"
-                type="text"
-                required
-                autofocus
-                autocomplete="phoneNumber"
-                :placeholder="__('Número telefónico de contacto')"
-            />
 
             <!-- second surname -->
             <flux:input
                 name="secondSurname"
-                :label="__('second surname')"
+                :label="__('Segundo apellido')"
                 :value="old('secondSurname')"
                 type="text"
                 required
@@ -64,11 +53,22 @@
                 autocomplete="secondSurname"
                 :placeholder="__('Segundo apellido')"
             />
+              <!-- phone number -->
+            <flux:input
+                name="phoneNumber"
+                :label="__('Número de teléfono')"
+                :value="old('phoneNumber')"
+                type="phone"
+                required
+                autofocus
+                autocomplete="phoneNumber"
+                :placeholder="__('Número telefónico de contacto')"
+            />
 
             <!-- Email Address -->
             <flux:input
                 name="email"
-                :label="__('Email address')"
+                :label="__('Correo electrónico')"
                 :value="old('email')"
                 type="email"
                 required
@@ -79,7 +79,7 @@
             <!-- Password -->
             <flux:input
                 name="password"
-                :label="__('Password')"
+                :label="__('Contraseña')"
                 type="password"
                 required
                 autocomplete="new-password"
@@ -90,7 +90,7 @@
             <!-- Confirm Password -->
             <flux:input
                 name="password_confirmation"
-                :label="__('Confirm password')"
+                :label="__('Confirmar contraseña')"
                 type="password"
                 required
                 autocomplete="new-password"
