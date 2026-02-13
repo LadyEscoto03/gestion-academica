@@ -13,9 +13,17 @@ class Profile extends Component
 {
     use ProfileValidationRules;
 
+    public string $identification = '';
+
     public string $name = '';
 
     public string $email = '';
+
+    public string $surname = '';
+
+    public string $secondSurname = '';
+
+    public string $phoneNumber = '';
 
     /**
      * Mount the component.
@@ -24,6 +32,10 @@ class Profile extends Component
     {
         $this->name = Auth::user()->name;
         $this->email = Auth::user()->email;
+        $this->identification = Auth::user()->identification;
+        $this->surname = Auth::user()->surname;
+        $this->secondSurname = Auth::user()->secondSurname;
+        $this->phoneNumber = Auth::user()->phoneNumber;
     }
 
     /**
