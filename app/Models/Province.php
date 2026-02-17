@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Province extends Model
 {
     protected $fillable = ['name'];
+
+    public function cantons()
+    {
+        return $this->hasMany(Canton::class);
+    }
 }
