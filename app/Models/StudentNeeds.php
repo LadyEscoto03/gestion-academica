@@ -9,6 +9,11 @@ class StudentNeeds extends Model
     protected $fillable = [
         'conditionType',
         'description',
-        'requireSupport'
+        'requireSupport',
     ];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }

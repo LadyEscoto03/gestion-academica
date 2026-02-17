@@ -22,4 +22,9 @@ class Student extends Model
     {
         return $this->belongsToMany(Guardian::class)->withPivot('relationship', 'livesWith')->withTimestamps();
     }
+
+    public function studentNeeds()
+    {
+        return $this->hasMany(StudentNeeds::class);
+    }
 }
