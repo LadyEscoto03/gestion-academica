@@ -17,4 +17,9 @@ class Student extends Model
         'phoneNumber',
         'email',
     ];
+
+    public function guardians()
+    {
+        return $this->belongsToMany(Guardian::class)->withPivot('relationship', 'livesWith')->withTimestamps();
+    }
 }
