@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('student_id')->references('id')->on('students');
             $table->foreignId('guardian_id')->references('id')->on('guardians');
             $table->string('relationship');
-            $table->boolean('livesWith ');
+            $table->boolean('livesWith');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('student_guardians');
+        Schema::dropIfExists('student_guardian');
     }
 };
